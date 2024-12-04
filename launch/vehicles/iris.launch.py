@@ -71,14 +71,13 @@ def launch_vehicle(context, *args, **kwargs):
 
     # Launch PX4 simulator
     px4_sitl_process = ExecuteProcess(
-        cmd=[
+        cmd=['bash', '-c',
             PX4_DIR + '/build/px4_sitl_default/bin/px4',
             PX4_DIR + '/ROMFS/px4fmu_common/',
             '-s',
             PX4_DIR + '/ROMFS/px4fmu_common/init.d-posix/rcS',
             '-i ' + str(port_increment)
         ],
-        prefix='bash -c "$0 $@"',
         cwd=PX4_RUN_DIR,
         output='screen',
         env=environment,

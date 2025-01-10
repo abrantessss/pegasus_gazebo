@@ -6,13 +6,13 @@
         <inertial>
           <mass>0.00001</mass>
           <inertia>
-            <ixx>4.15e-10</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>2.407e-10</iyy>
-          <iyz>0</iyz>
-          <izz>2.407e-10</izz>
-          </inertia>
+            <ixx>2.407e-10</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.407e-10</iyy>
+            <iyz>0</iyz>
+            <izz>2.407e-10</izz>
+            </inertia>
         </inertial>
         <collision name='collision'>
           <geometry>

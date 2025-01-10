@@ -50,7 +50,7 @@ def launch_vehicle(context, *args, **kwargs):
             '--gst_udp_port=' + str(5600 + port_increment),
             '--video_uri=' + str(5600 + port_increment),
             '--mavlink_cam_udp_port=' + str(14530 + port_increment),
-            '--output-file=' + os.path.join(pegasus_models_dir, 'models/'+ 'pegasus_iris' + '/' + 'pegasus_iris' +  str(vehicle_id) + '.sdf'),
+            '--output-file=' + os.path.join(pegasus_models_dir, 'models/'+ 'pegasus_iris' + '/' + 'pegasus_iris' +  '.sdf'),
             '--generate_ros_models=True'
         ],
         env=environment,
@@ -62,7 +62,7 @@ def launch_vehicle(context, *args, **kwargs):
         package='gazebo_ros', 
         executable='spawn_entity.py',
         arguments=['-entity', 'drone' + str(vehicle_id), 
-               '-file', os.path.join(pegasus_models_dir, 'models/'+ 'pegasus_iris' + '/' + 'pegasus_iris' +  str(vehicle_id) + '.sdf'),
+               '-file', os.path.join(pegasus_models_dir, 'models/'+ vehicle_model + '/' + vehicle_model + '.sdf'),
                '-x', LaunchConfiguration('x').perform(context),
                '-y', LaunchConfiguration('y').perform(context),
                '-z', LaunchConfiguration('z').perform(context),
@@ -100,7 +100,6 @@ def launch_vehicle(context, *args, **kwargs):
             'connection': 'udp://:' + str(14540 + port_increment)
         }.items(),
         condition=LaunchConfigurationEquals('launch_pegasus', 'true'),
-        condition=LaunchConfigurationEquals('launch_pegasus', 'true')
     )
 
     return [model_generator_process,

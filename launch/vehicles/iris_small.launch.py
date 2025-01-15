@@ -17,8 +17,8 @@ os.makedirs(PX4_RUN_DIR, exist_ok=True)
 
 def launch_vehicle(context, *args, **kwargs):
 
-     # Define the model to launch
-    vehicle_model = 'pegasus_iris'
+    # Define the model to launch
+    vehicle_model = 'pegasus_iris_small'
 
     vehicle_id = int(LaunchConfiguration('vehicle_id').perform(context))
     port_increment = vehicle_id - 1
@@ -149,7 +149,7 @@ def generate_launch_description():
         # TODO - receive coordinates in ned perform the conversion to ENU and f.l.u here
         # so that the user only needs to work in NED coordinates
         DeclareLaunchArgument('vehicle_id', default_value='1', description='Drone ID in the network'),
-        DeclareLaunchArgument('x', default_value='0.0', description='X position expressed in ENU'),
+        DeclareLaunchArgument('x', default_value='10.0', description='X position expressed in ENU'),
         DeclareLaunchArgument('y', default_value='0.0', description='Y position expressed in ENU'),
         DeclareLaunchArgument('z', default_value='0.0', description='Z position expressed in ENU'),
         DeclareLaunchArgument('R', default_value='0.0', description='Roll orientation expressed in ENU'),

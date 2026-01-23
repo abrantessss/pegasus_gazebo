@@ -1,0 +1,55 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+    <model name='RPi_cam'>
+    <pose>-0.158979 -0.04405 0.045074 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>0.00001</mass>
+          <inertia>
+            <ixx>2.407e-10</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.407e-10</iyy>
+            <iyz>0</iyz>
+            <izz>2.407e-10</izz>
+            </inertia>
+        </inertial>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.0001 0.0001 0.0001</size>
+            </box>
+          </geometry>
+        </visual>
+        <sensor name='camera' type='camera'>
+          <camera name='__default__'>
+            <horizontal_fov>1.085</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>RGB_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>1</visualize>
+          <plugin name="rpi_camera_plugin" filename="libgazebo_ros_camera.so">
+            <camera_name>rpi</camera_name>
+            <frameName>rpi_camera_link</frameName>
+            <hack_baseline>0</hack_baseline>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+  </model>
+</sdf>

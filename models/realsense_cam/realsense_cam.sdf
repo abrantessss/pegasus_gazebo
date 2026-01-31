@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="realsense_cam">
+    <plugin name="realsense_plugin" filename="libRealSensePlugin.so"/>
+    <pose>0 0 0.015 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>0.00001</mass>
+        <inertia>
+          <ixx>2.407e-10</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.407e-10</iyy>
+          <iyz>0</iyz>
+          <izz>2.407e-10</izz>
+          </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <box>
+            <size>0.0001 0.0001 0.0001</size>
+          </box>
+        </geometry>
+      </visual>
+      <sensor name="color" type="camera">
+        <pose>0 -0.046 0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>1</visualize>
+      </sensor>
+      <sensor name="ired1" type="camera">
+        <pose>0 -0.06 0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <plugin name="realsense_left_camera_plugin" filename="libgazebo_ros_camera.so">
+          <camera_name>realsense_left</camera_name>
+          <frameName>realsense_left_camera_link</frameName>
+          <hack_baseline>0</hack_baseline>
+        </plugin>
+      </sensor>
+      <sensor name="ired2" type="camera">
+        <pose>0 0.01 0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <plugin name="realsense_right_camera_plugin" filename="libgazebo_ros_camera.so">
+          <camera_name>realsense_right</camera_name>
+          <frameName>realsense_right_camera_link</frameName>
+          <hack_baseline>0</hack_baseline>
+        </plugin>
+      </sensor>
+      <sensor name="depth" type="depth">
+        <pose>0 -0.03 0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+        <plugin name="realsense_depth_plugin" filename="libgazebo_ros_camera.so">
+          <camera_name>realsense</camera_name>
+          <frameName>realsense_camera_link</frameName>
+          <hack_baseline>0</hack_baseline>
+          <min_depth>0.001</min_depth>
+        </plugin>
+      </sensor>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+    </link>
+  </model>
+</sdf>
